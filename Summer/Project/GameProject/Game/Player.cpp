@@ -16,7 +16,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
-	m_state = eState_Idle;
+	//m_state = eState_Idle;
 	//着地フラグ
 	//m_is_ground=true;
 	//攻撃番号
@@ -52,6 +52,21 @@ Player::Player(const CVector2D& p, bool flip) :
 		m_flip = false;
 		move_flag = true;
 	}
+	if (HOLD(CInput::eUp)) {
+		//移動量を設定
+		m_pos.y += -move_speed;
+		//反転フラグ
+		m_flip = true;
+		move_flag = true;
+	}
+	//右移動
+	if (HOLD(CInput::eDown)) {
+		//移動量を設定
+		m_pos.y += move_speed;
+		//反転フラグ
+		m_flip = false;
+		move_flag = true;
+	}
 	//ジャンプ
 	//if (m_is_ground && PUSH(CInput::eButton2)) {
 	//	m_vec.y = -jump_pow;
@@ -79,18 +94,17 @@ Player::Player(const CVector2D& p, bool flip) :
 			//m_img.ChangeAnimation(eAnimJumpDown, false);
 	//}
 	//移動中なら
-	else
-	{
+	
 		if (move_flag) {
 			//走るアニメーション
 			m_img.ChangeAnimation(eAnimRun);
 		}
 		else {
 			//待機アニメーション
-			m_img.ChangeAnimation(eAnimIdle);
+			//m_img.ChangeAnimation(eAnimIdle);
 		}
 
-	}
+	
 
 
 }
