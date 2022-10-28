@@ -9,6 +9,10 @@
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
+#include"Base/Base.h"
+#include"Game/AnimData.h"
+#include"Game/Player.h"
+
 
 
 
@@ -18,7 +22,10 @@ void MainLoop(void) {
 	//ゲーム中の動きはここに書く
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
-
+	Base::CheckKillAll();
+	Base::UpdateAll();
+	Base::CollisionAll();
+	Base::DrawAll();
 
 
 
@@ -58,8 +65,8 @@ void Init(void)
 	//初期化の命令を書く
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
-	
-
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 32, 32));
+	Base::Add(new Player(CVector2D(200, 300), false));
 
 
 
