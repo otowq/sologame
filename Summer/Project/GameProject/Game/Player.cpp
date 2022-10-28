@@ -5,7 +5,7 @@
 Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {
 	//画像複製
-	m_img = COPY_RESOURCE("Player", CImage);
+	m_img = COPY_RESOURCE("player", CImage);
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定

@@ -7,8 +7,8 @@ static TexAnim playerIdle[] = {
 	
 };
 static TexAnim playerRun[] = {
-	{ 16,2 },
-	{ 17,2 },
+	{ 7,2 },
+	{ 8,2 },
 	
 };
 static TexAnim playerJumpUp[] = {
