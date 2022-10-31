@@ -14,7 +14,7 @@
     <ClCompile Include="Game\Map.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Sinkei.cpp">
+    <ClCompile Include="Game\Sinkei.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,7 +42,7 @@
     <ClInclude Include="Game\Map.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Sinkei.h">
+    <ClInclude Include="Game\Sinkei.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
