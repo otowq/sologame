@@ -17,6 +17,9 @@
     <ClCompile Include="Game\Sinkei.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Field.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -43,6 +46,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Sinkei.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Field.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

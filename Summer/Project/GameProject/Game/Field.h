@@ -4,13 +4,13 @@
 class Field : public Base {
 private:
 	//画像オブジェクト（前景）
-	CImage m_foreground;
+	//CImage m_foreground;
 	//画像オブジェクト（遠景）
-	CImage m_town;
+	//CImage m_town;
 	//画像オブジェクト（最遠景）
-	CImage m_sky;
+	CImage m_haikei;
 	//地面の高さ
-	float m_ground_y;
+	//float m_ground_y;
 
 public:
 	/// コンストラクタ
@@ -19,7 +19,7 @@ public:
 	void Draw();
 
 	/// 地面の高さを取得
-	float GetGroundY() {
-		return m_ground_y;
-	}
+	//float GetGroundY() {
+		//return m_ground_y;
+	//}
 };
