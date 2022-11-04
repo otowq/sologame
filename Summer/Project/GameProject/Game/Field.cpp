@@ -10,7 +10,7 @@ void Field::Draw()
 	float sc;
 	m_haikei.Draw();
 	sc = m_scroll.x / 4;
-	
+	sc = m_scroll.y / 4;
 
 }
 
