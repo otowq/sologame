@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "AnimData.h"
 #include"Field.h"
+#include"Map.h"
 //#include "Effect.h"
 Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {

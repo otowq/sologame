@@ -14,7 +14,7 @@
 #include"Game/Player.h"
 #include"Game/Map.h"
 #include"Game/Field.h"
-
+#include"Title/Title.h"
 
 
 
@@ -69,13 +69,11 @@ void Init(void)
 	//-----------------------------------------------------
 	ADD_RESOURCE("Map", CImage::CreateImage("Image/Map.png"));
 	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
-
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("player", CImage::CreateImage("Image/player.png", player_anim_data, 32, 32));
-	Base::Add(new Player(CVector2D(200, 300), false));
 	
-	Base::Add(new Field());
-	Base::Add(new Map(2));
-
+	
+	Base::Add(new Title());
 
 
 

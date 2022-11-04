@@ -15,20 +15,17 @@ Game::Game() :Base(eType_Scene)
 Game::~Game()
 {
 	//全てのオブジェクトを破棄
-//	Base::KillAll();
+	Base::KillAll();
 	//タイトルシーンへ
-	//Base::Add(new Title());
+	Base::Add(new Title());
 }
 
 void Game::Update()
 {
-	/*Base* enemy = Base::FindObject(eType_Enemy);
-	if (enemy == nullptr || (PUSH(CInput::eButton1))) {
-		Base* field = Base::FindObject(eType_Field);
-		//Base* Map = Base::FindObject(eType_Map);
+	//Base* enemy = Base::FindObject(eType_Enemy);
+	if (/*enemy == nullptr || */ (PUSH(CInput::eButton1))) {
 		Base* player = Base::FindObject(eType_Player);
 		Base* enemy = Base::FindObject(eType_Enemy);
-		field->SetKill();
 		player->SetKill();
 		stage++;
 		if (stage >= 3) {
@@ -42,7 +39,7 @@ void Game::Update()
 		{
 			Base::Add(new Map(stage));
 		}
-	}*/
+	}
 	//ゴールが無ければゲームシーン終了
 	//if (!Base::FindObject(eType_Goal)) {
 		//SetKill();

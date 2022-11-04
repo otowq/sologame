@@ -26,6 +26,9 @@
     <ClCompile Include="Game\Effect.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Title\Title.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -62,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="Game\Enemy.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\Title.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
