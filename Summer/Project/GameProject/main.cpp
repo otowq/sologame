@@ -72,11 +72,9 @@ void Init(void)
 
 	ADD_RESOURCE("player", CImage::CreateImage("Image/player.png", player_anim_data, 32, 32));
 	Base::Add(new Player(CVector2D(200, 300), false));
-	Base::Add(new Map());
-	//フィールドの生成
+	
 	Base::Add(new Field());
-
-
+	Base::Add(new Map(2));
 
 
 
