@@ -1,8 +1,7 @@
 //ゲーム係機能のインクルード
 #include <GLLibrary.h>
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 720
-
+#define SCREEN_WIDTH  1920
+#define SCREEN_HEIGHT 1080
 
 
 
@@ -15,6 +14,7 @@
 #include"Game/Map.h"
 #include"Game/Field.h"
 #include"Title/Title.h"
+#include"Game/Sinkei.h"
 
 
 
@@ -68,6 +68,7 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 	ADD_RESOURCE("Map", CImage::CreateImage("Image/Map.png"));
+	ADD_RESOURCE("cards", CImage::CreateImage("Image/cards.png"));
 	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("player", CImage::CreateImage("Image/player.png", player_anim_data, 32, 32));
@@ -75,7 +76,7 @@ void Init(void)
 	
 	Base::Add(new Title());
 
-
+	Base::Add(new Board());
 
 }
 

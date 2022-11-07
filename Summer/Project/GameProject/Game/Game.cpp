@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include"Map.h"
+#include"Sinkei.h"
 #include "../Title/Title.h"
 int stage = 1;
 
@@ -10,6 +11,7 @@ Game::Game() :Base(eType_Scene)
 {
 	Base::Add(new Field());
 	Base::Add(new Map(1));
+	Base::Add(new Board());
 }
 
 Game::~Game()
