@@ -76,7 +76,7 @@ void Init(void)
 	
 	Base::Add(new Title());
 
-	Base::Add(new Board());
+	
 
 }
 

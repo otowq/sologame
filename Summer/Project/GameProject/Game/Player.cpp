@@ -3,12 +3,39 @@
 #include"Field.h"
 #include"Map.h"
 //#include "Effect.h"
+static TexAnim _anim_down[] = {
+	{0,4},
+	{1,4},
+	{2,4},
+};
+static TexAnim _anim_left[] = {
+	{3,4},
+	{4,4},
+	{5,4},
+};
+static TexAnim _anim_right[] = {
+	{6,4},
+	{7,4},
+	{8,4},
+};
+static TexAnim _anim_up[] = {
+	{9,4},
+	{10,4},
+	{11,4},
+};
+
+TexAnimData player_anim_data[] = {
+	ANIMDATA(_anim_down),		//eUp
+	ANIMDATA(_anim_left),		//eLeft
+	ANIMDATA(_anim_right),		//eRight
+	ANIMDATA(_anim_up),			//eUp
+};
 Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {
 	//画像複製
 	m_img = COPY_RESOURCE("player", CImage);
 	//再生アニメーション設定
-	m_img.ChangeAnimation(0);
+	//m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos = p;
 	//中心位置設定
@@ -26,143 +53,57 @@ Player::Player(const CVector2D& p, bool flip) :
 	m_damage_no = -1;
 	//
 	m_hp = 100;
+	//方向
+	m_dir = eUp;
+	//アニメーション種類指定
+	m_img.ChangeAnimation(m_dir);
 
 
-}void Player::StateIdle()
-{
-	//移動量
-	const float move_speed = 6;
-	//移動フラグ
-	bool move_flag = false;
-	//ジャンプ力
-	//const float jump_pow = 12;
+}
 
+void Player::Update() {
+	bool is_move = false;
 	//左移動
 	if (HOLD(CInput::eLeft)) {
-		//移動量を設定
-		m_pos.x += -move_speed;
-		//反転フラグ
-		m_flip = true;
-		move_flag = true;
+		m_dir = eLeft;
+		is_move = true;
 	}
 	//右移動
 	if (HOLD(CInput::eRight)) {
-		//移動量を設定
-		m_pos.x += move_speed;
-		//反転フラグ
-		m_flip = false;
-		move_flag = true;
+		m_dir = eRight;
+		is_move = true;
 	}
+	//上移動
 	if (HOLD(CInput::eUp)) {
-		//移動量を設定
-		m_pos.y += -move_speed;
-		//反転フラグ
-		m_flip = true;
-		move_flag = true;
+		m_dir = eUp;
+		is_move = true;
 	}
-	//右移動
+	//下移動
 	if (HOLD(CInput::eDown)) {
-		//移動量を設定
-		m_pos.y += move_speed;
-		//反転フラグ
-		m_flip = false;
-		move_flag = true;
+		m_dir = eDown;
+		is_move = true;
 	}
-	//ジャンプ
-	//if (m_is_ground && PUSH(CInput::eButton2)) {
-	//	m_vec.y = -jump_pow;
-	//	m_is_ground = false;
-	//}
-
-	//攻撃
-	//if (PUSH(CInput::eButton1)) {
-		//攻撃状態へ移行
-
-	//攻撃
-		//if (PUSH(CInput::eButton1)) {
-			//攻撃状態へ移行
-			//m_state = eState_Attack;
-			//m_attack_no++;
-		//}
-
-	//ジャンプ中なら
-	//if (!m_is_ground) {
-		//if (m_vec.y < 0)
-			//上昇アニメーション
-			//m_img.ChangeAnimation(eAnimJumpUp, false);
-		//else
-			//下降アニメーション
-			//m_img.ChangeAnimation(eAnimJumpDown, false);
-	//}
-	//移動中なら
-	
-		if (move_flag) {
-			//走るアニメーション
-			m_img.ChangeAnimation(eAnimRun);
-		}
-		else {
-			//待機アニメーション
-			//m_img.ChangeAnimation(eAnimIdle);
-		}
-
-	
-
-
-}
-void Player::StateAttack()
-{
-	//攻撃アニメーションへ変更
-	m_img.ChangeAnimation(eAnimAttack01, false);
-	//3番目のパターンなら
-	/*if (m_img.GetIndex() == 3) {
-		if (m_flip) {
-			Base::Add(new Slash(m_pos + CVector2D(-64, -64), m_flip, eType_Player_Attack, m_attack_no));
-		}
-		else {
-			Base::Add(new Slash(m_pos + CVector2D(64, -64), m_flip, eType_Player_Attack, m_attack_no));
-		}
-	}*/
-	//アニメーションが終了したら
-	if (m_img.CheckAnimationEnd()) {
-		//通常状態へ移行
-		m_state = eState_Idle;
+	if (is_move) {
+		float move_speed = 4.0f;
+		//現在の方向へ移動
+		//各方向の方向ベクトル
+		CVector2D move_dir[] = {
+			CVector2D(0,1),		//eDown
+			CVector2D(-1,0),	//eLeft
+			CVector2D(1,0),		//eRight
+			CVector2D(0,-1),	//eUp
+		};
+		//移動
+		m_pos += move_dir[m_dir] * move_speed;
+		//アニメーション再生
+		m_img.m_animSpeed = 1.0f;
 	}
-}
-
-
-void Player::StateDamage()
-{
-	/*m_img.ChangeAnimation(eAnimDamage, false);
-	if (m_img.CheckAnimationEnd()) {
-		m_state = eState_Idle;
-	}*/
-}
-void Player::StateDown()
-{
-	/*m_img.ChangeAnimation(eAnimDown, false);
-	if (m_img.CheckAnimationEnd()) {
-		m_kill = true;
-	}*/
-}
-void Player::Update() {
-	switch (m_state) {
-		//通常状態
-	case eState_Idle:
-		StateIdle();
-		break;
-		//攻撃状態
-	case eState_Attack:
-		StateAttack();
-		break;
-		//ダメージ状態
-	case eState_Damage:
-		StateDamage();
-		break;
-		//ダウン状態
-	case eState_Down:
-		StateDown();
-		break;
+	else {
+		//アニメーション停止
+		m_img.m_animSpeed = 0.0f;
 	}
+	//アニメーション種類指定
+	m_img.ChangeAnimation(m_dir);
 	//落ちていたら落下中状態へ移行
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;

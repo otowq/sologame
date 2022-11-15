@@ -34,6 +34,14 @@ public:
 	static std::list<Base*> m_list;
 	//矩形
 	CRect	m_rect;	
+	//方向
+	int m_dir;
+	enum {
+		eDown,
+		eLeft,
+		eRight,
+		eUp,
+	};
 
 	//スクロール値
 	static CVector2D m_scroll;
