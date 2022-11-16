@@ -1,6 +1,6 @@
 #include"Sinkei.h"
 
-static int m_Board[4][4] = {
+static int board[4][4] = {
 	{1,2,3,4},
 	{1,2,3,4},
 	{1,2,3,4},
@@ -10,8 +10,8 @@ static int m_Board[4][4] = {
 Board::Board()
 	:Base(eType_Board)
 {
+	//画像複製
 	m_img = COPY_RESOURCE("cards", CImage);
-
 }
 
 void Board::Draw()
@@ -20,12 +20,12 @@ void Board::Draw()
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			//表示しない制御
-			if (m_Board[i][j] == 0)continue;
-			int t = m_Board[i][j];
+			if (board[i][j] == 0)continue;
+			int t = board[i][j];
 			int x = t % 8;
 			int y = t / 8;
 			//画像切り抜き
-			m_img.SetRect(32 * x, 32 * y, 32 * x + 32, 32 * y + 32);
+			m_img.SetRect(32 * x, 64 * y, 32 * x + 32,64 * y + 64);
 			//表示サイズ設定
 			m_img.SetSize(MAP_TIP_SIZE, MAP_TIP_SIZE2);
 			//表示位置設定
@@ -34,8 +34,8 @@ void Board::Draw()
 			m_img.Draw();
 		}
 	}
-
 }
+
 int Board::GetTip(const CVector2D& pos)
 {
 	//列を計算
@@ -51,7 +51,8 @@ int Board::GetTip(const CVector2D& pos)
 	//チップデータを返却
 	return GetTip(col, raw);
 }
+
 int Board::GetTip(int col, int raw)
 {
-	return m_Board[raw][col];
+	return board[raw][col];
 }
