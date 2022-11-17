@@ -72,6 +72,7 @@ void Init(void)
 	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("player", CImage::CreateImage("Image/player.png", player_anim_data, 32, 32));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", player_anim_data, 32, 32));
 	
 	
 	Base::Add(new Title());
