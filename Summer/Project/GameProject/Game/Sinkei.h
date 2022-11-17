@@ -1,12 +1,12 @@
 #pragma once
 #include "../Base/Base.h"
-#define MAP_TIP_SIZE	32
-#define MAP_TIP_SIZE2   64
+#define CARD_SIZE	64
+#define CARD_SIZE2   128
 
 class Board : public Base {
 private:
 	CImage m_img;
-	int board[4][4];
+	//int board[4][4];
 public:
 	Board();
 	void Draw();
