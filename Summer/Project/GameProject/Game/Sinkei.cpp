@@ -1,8 +1,6 @@
 #include"Sinkei.h"
 
-	int mark;
-	int no;
-	bool rev;
+	
 static int board[4][4] = {
 	{1,2,3,4},
 	{1,2,3,4},
@@ -20,15 +18,23 @@ Board::Board()
 
 void Board::Draw()
 {
-	//int deal[4][4] = { 0 };
+
+	CVector2D p = CInput::GetMousePoint();
+	int col = p.x / CARD_SIZE;
+	int row = p.y / CARD_SIZE2;
+	if (PUSH(CInput::eMouseL) && board[row][col] < 0) {
+		board[row][col] = -board[row][col];
+	}
+
+
 	//マップチップによる表示の繰り返し
 	for ( int i = 0; i < 4; i++) {
 		for ( int j = 0; j < 4; j++) {
 			//表示しない制御
 			if (board[i][j] == 0)continue;
 			int t = board[i][j] - 1;
-			int x = t % 4;
-			int y = t / 4;
+			int x = t % 8;
+			int y = t / 8;
 			//画像切り抜き
 			if (t >= 0) {
 				m_img.SetRect(32 * x, 58 * y, 32 * x + 32, 58 * y + 58);
@@ -39,7 +45,7 @@ void Board::Draw()
 			//表示サイズ設定
 			m_img.SetSize(CARD_SIZE, CARD_SIZE2);
 			//表示位置設定
-			m_img.SetPos(CARD_SIZE * j - m_scroll.x, CARD_SIZE2 * i - m_scroll.y);
+			m_img.SetPos(CARD_SIZE * j , CARD_SIZE2 * i );
 			//描画
 			m_img.Draw();
 		}
