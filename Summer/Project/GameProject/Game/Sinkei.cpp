@@ -1,10 +1,10 @@
 #include"Sinkei.h"
 
-	
+int count = 1;
 static int board[4][4] = {
 	{1,2,3,4},
 	{1,2,3,4},
-	{1,2,3,4},
+	{-1,-2,-3,-4},
 	{-1,-2,-3,-4},
 };
 
@@ -22,9 +22,20 @@ void Board::Draw()
 	CVector2D p = CInput::GetMousePoint();
 	int col = p.x / CARD_SIZE;
 	int row = p.y / CARD_SIZE2;
-	if (PUSH(CInput::eMouseL) && board[row][col] < 0) {
+
+	if (PUSH(CInput::eMouseL) && board[row][col] < 0 && count <= 2) {
 		board[row][col] = -board[row][col];
+		count++;
+		if (count == 2 ) {
+			//めくったカードが一致したら消す
+
+		}
+		else {
+			//一致しなければまた裏に戻す
+
+		}
 	}
+	
 
 
 	//マップチップによる表示の繰り返し
@@ -33,6 +44,7 @@ void Board::Draw()
 			//表示しない制御
 			if (board[i][j] == 0)continue;
 			int t = board[i][j] - 1;
+
 			int x = t % 8;
 			int y = t / 8;
 			//画像切り抜き
