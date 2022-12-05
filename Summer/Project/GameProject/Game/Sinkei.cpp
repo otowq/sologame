@@ -5,7 +5,7 @@ int count = 1;
 //int mekuri_y[2];
 //card{mekuri_x[0]}{mekuri_y[0]}
 //
-static int board[4][4] = {
+static int boardbase[4][4] = {
 	{1,2,3,4},
 	{1,2,3,4},
 	{-1,-2,-3,-4},
@@ -18,6 +18,21 @@ Board::Board()
 	
 	//画像複製
 	m_img = COPY_RESOURCE("cards", CImage);
+	memcpy(m_board, boardbase, sizeof(boardbase));
+	for (int i = 0; i < 10; i++) {
+		int c1 = rand() % 4;
+		int r1 = rand() % 4;
+		int c2 = rand() % 4;
+		int r2 = rand() % 4;
+		int w = m_board[r1][c1];
+		m_board[r1][c1] = m_board[r2][c2];
+		m_board[r2][c2] = w;
+		w = m_board[r1][c1];
+	}
+
+
+
+
 }
 
 void Board::Draw()
@@ -27,8 +42,8 @@ void Board::Draw()
 	int col = p.x / CARD_SIZE;
 	int row = p.y / CARD_SIZE2;
 
-	if (PUSH(CInput::eMouseL) && board[row][col] < 0 && count <= 2) {
-		board[row][col] = -board[row][col];
+	if (PUSH(CInput::eMouseL) && m_board[row][col] < 0 && count <= 2) {
+		m_board[row][col] = -m_board[row][col];
 		count++;
 		if (count == 2 ) {
 			//めくったカードが一致したら消す
@@ -46,8 +61,8 @@ void Board::Draw()
 	for ( int i = 0; i < 4; i++) {
 		for ( int j = 0; j < 4; j++) {
 			//表示しない制御
-			if (board[i][j] == 0)continue;
-			int t = board[i][j] - 1;
+			if (m_board[i][j] == 0)continue;
+			int t = m_board[i][j] - 1;
 
 			int x = t % 8;
 			int y = t / 8;
@@ -86,5 +101,5 @@ int Board::GetTip(const CVector2D& pos)
 
 int Board::GetTip(int col, int raw)
 {
-	return board[raw][col];
+	return m_board[raw][col];
 }

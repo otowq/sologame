@@ -39,8 +39,8 @@ Player::Player(const CVector2D& p, bool flip) :
 	//座標設定
 	m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(32, 64);
-	m_rect = CRect(-12, -32, 12, 0);
+	m_img.SetCenter(16, 16);
+	m_rect = CRect(-16, -16, 16, 16);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -62,6 +62,8 @@ Player::Player(const CVector2D& p, bool flip) :
 }
 
 void Player::Update() {
+	
+
 	bool is_move = false;
 	//左移動
 	if (HOLD(CInput::eLeft)) {
@@ -127,16 +129,21 @@ void Player::Draw() {
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
+	//当たり判定矩形の表示
+	DrawRect();
+
+
 }
 void Player::Collision(Base* b)
 {
 	switch (b->m_type) {
 		//ゴール判定
-	case eType_Goal:
+	case eType_Enemy:
 		if (Base::CollisionRect(this, b)) {
 			SetKill();
 		}
 		break;
+
 		//攻撃エフェクトとの判定
 	/*case eType_Enemy_Attack:
 		//Slash型へキャスト、型変換できたら

@@ -12,7 +12,7 @@ private:
 	};
 	//状態変数
 	int m_state;
-
+	int m_pos_old;
 	CImage m_img;
 	bool	m_flip;
 	//着地フラグ
@@ -24,8 +24,7 @@ private:
 
 	int m_hp;
 
-	//矩形
-	CRect	m_rect;
+	
 	//各状態での挙動
 	void StateIdle();
 	void StateAttack();
