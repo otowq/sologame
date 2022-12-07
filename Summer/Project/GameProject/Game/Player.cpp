@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "AnimData.h"
 #include"Field.h"
+#include"Sinkei.h"
 #include"Map.h"
 //#include "Effect.h"
 static TexAnim _anim_down[] = {
@@ -140,7 +141,7 @@ void Player::Collision(Base* b)
 		//ÉSÅ[ÉãîªíË
 	case eType_Enemy:
 		if (Base::CollisionRect(this, b)) {
-			SetKill();
+			Base::Add(new Board());
 		}
 		break;
 

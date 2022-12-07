@@ -11,7 +11,7 @@ Game::Game() :Base(eType_Scene)
 {
 	Base::Add(new Field());
 	Base::Add(new Map(1));
-	Base::Add(new Board());
+	//Base::Add(new Board());
 }
 
 Game::~Game()
