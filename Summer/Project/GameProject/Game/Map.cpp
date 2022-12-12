@@ -63,6 +63,8 @@ Map::Map(int stage)
 			
 			Base::Add(new Player(CVector2D(200, 300), false));
 			Base::Add(new Enemy(CVector2D(400, 300), false));
+			Base::Add(new Enemy(CVector2D(600, 500), false));
+			Base::Add(new Enemy(CVector2D(600, 100), false));
 			memcpy(m_stagedata, stage1data, sizeof(stage1data));
 
 			break;

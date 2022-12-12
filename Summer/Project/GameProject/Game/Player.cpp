@@ -138,7 +138,7 @@ void Player::Draw() {
 void Player::Collision(Base* b)
 {
 	switch (b->m_type) {
-		//ƒS[ƒ‹”»’è
+		//”»’è
 	case eType_Enemy:
 		if (Base::CollisionRect(this, b)) {
 			Base::Add(new Board());

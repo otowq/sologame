@@ -4,9 +4,9 @@ int count = 1;
 //int mekuri_x[2];
 //int mekuri_y[2];
 //card{mekuri_x[0]}{mekuri_y[0]}
-//
+
 static int boardbase[4][4] = {
-	{-1,-2,-3,-4},
+	{1,2,3,4},
 	{-1,-2,-3,-4},
 	{-1,-2,-3,-4},
 	{-1,-2,-3,-4},
@@ -18,6 +18,7 @@ Board::Board()
 	
 	//画像複製
 	m_img = COPY_RESOURCE("cards", CImage);
+	//カードランダム配置
 	memcpy(m_board, boardbase, sizeof(boardbase));
 	for (int i = 0; i < 10; i++) {
 		int c1 = rand() % 4;
@@ -30,18 +31,15 @@ Board::Board()
 		w = m_board[r1][c1];
 	}
 
-
-
-
 }
 
 void Board::Draw()
 {
-
+	//マウス判定
 	CVector2D p = CInput::GetMousePoint();
 	int col = p.x / CARD_SIZE;
 	int row = p.y / CARD_SIZE2;
-
+	//めくり判定
 	if (PUSH(CInput::eMouseL) && m_board[row][col] < 0 && count <= 2) {
 		m_board[row][col] = -m_board[row][col];
 		count++;
@@ -68,10 +66,12 @@ void Board::Draw()
 			int y = t / 8;
 			//画像切り抜き
 			if (t >= 0) {
+				//カード表
 				m_img.SetRect(32 * x, 58 * y, 32 * x + 32, 58 * y + 58);
 			}
 			else {
-				m_img.SetRect(32 * 14, 58 * 0, 32 * 14 + 32, 58 * 0 + 58);
+				//カード裏
+				m_img.SetRect(32 * 14, 58 * 1, 32 * 14 + 32, 58 * 1 + 58);
 			}
 			//表示サイズ設定
 			m_img.SetSize(CARD_SIZE, CARD_SIZE2);
