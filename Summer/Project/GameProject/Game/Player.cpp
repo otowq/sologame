@@ -32,14 +32,15 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(_anim_right),		//eRight
 	ANIMDATA(_anim_up),			//eUp
 };
-Player::Player(const CVector2D& p, bool flip) :
+Player::Player(const CVector2D& pos, bool flip) :
 	Base(eType_Player) {
 	//画像複製
 	m_img = COPY_RESOURCE("player", CImage);
+
 	//再生アニメーション設定
 	//m_img.ChangeAnimation(0);
 	//座標設定
-	m_pos = p;
+	m_pos = pos;
 	//中心位置設定
 	m_img.SetCenter(16, 16);
 	m_rect = CRect(-16, -16, 16, 16);
@@ -67,7 +68,7 @@ void Player::Update() {
 	if (Game::gamestate == Game::eBattle) {
 		return;
 	}
-
+	m_pos_old = m_pos;
 	bool is_move = false;
 	//左移動
 	if (HOLD(CInput::eLeft)) {
@@ -148,6 +149,17 @@ void Player::Collision(Base* b)
 				Game::gamestate = Game::eBattle;
 				Base::Add(new Board());
 			}
+		}
+		break;
+	case eType_Field:
+		if (Map* m = dynamic_cast<Map*>(b)) {
+			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect);
+			if (t != 0)
+				m_pos.x = m_pos_old.x;
+			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y), m_rect);
+			if (t != 0)
+				m_pos.y = m_pos_old.y;
+
 		}
 		break;
 

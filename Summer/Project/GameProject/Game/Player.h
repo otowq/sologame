@@ -12,7 +12,6 @@ private:
 	};
 	//ó‘Ô•Ï”
 	int m_state;
-	int m_pos_old;
 	CImage m_img;
 	bool	m_flip;
 	//’…’nƒtƒ‰ƒO

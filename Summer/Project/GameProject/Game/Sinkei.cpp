@@ -43,13 +43,13 @@ void Board::Draw()
 	if (PUSH(CInput::eMouseL) && m_board[row][col] < 0 && count <= 2) {
 		m_board[row][col] = -m_board[row][col];
 		count++;
-		if (count == 2 ) {
+		if (count > 2 ) {
 			//‚ß‚­‚Á‚½ƒJ[ƒh‚ªˆê’v‚µ‚½‚çÁ‚·
 
 		}
 		else {
 			//ˆê’v‚µ‚È‚¯‚ê‚Î‚Ü‚½— ‚É–ß‚·
-
+			
 		}
 	}
 	
