@@ -4,6 +4,8 @@
 
 class Game : public Base {
 public:
+	static int gamestate;
+	enum{eStage,eBattle};
 	Game();
 	~Game();
 	void Update();

@@ -6,6 +6,7 @@
 #include"Sinkei.h"
 #include "../Title/Title.h"
 int stage = 1;
+int Game::gamestate = eStage;
 
 Game::Game() :Base(eType_Scene)
 {

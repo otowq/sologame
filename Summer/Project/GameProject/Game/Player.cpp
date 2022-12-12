@@ -3,6 +3,7 @@
 #include"Field.h"
 #include"Sinkei.h"
 #include"Map.h"
+#include"Game.h"
 //#include "Effect.h"
 static TexAnim _anim_down[] = {
 	{0,4},
@@ -63,7 +64,9 @@ Player::Player(const CVector2D& p, bool flip) :
 }
 
 void Player::Update() {
-	
+	if (Game::gamestate == Game::eBattle) {
+		return;
+	}
 
 	bool is_move = false;
 	//ç∂à⁄ìÆ
@@ -141,7 +144,10 @@ void Player::Collision(Base* b)
 		//îªíË
 	case eType_Enemy:
 		if (Base::CollisionRect(this, b)) {
-			Base::Add(new Board());
+			if (Game::gamestate == Game::eStage) {
+				Game::gamestate = Game::eBattle;
+				Base::Add(new Board());
+			}
 		}
 		break;
 
