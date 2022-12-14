@@ -2,8 +2,8 @@
 
 int count = 1;
 
-int mekuri_x[2];
-int mekuri_y[2];
+//int mekuri_x[2];
+//int mekuri_y[2];
 //boardbase{ mekuri_x[0] }{mekuri_y[0]};
 
 static int boardbase[4][4] = {
