@@ -124,16 +124,16 @@ Map::Map(int stage)
 	{
 			//¶ã
 			int t = GetTip(CVector2D(pos.x + rect.m_left, pos.y + rect.m_top));
-			if (t != 0) return t;
+			if (t >=8) return t;
 			//‰Eã
 			t = GetTip(CVector2D(pos.x + rect.m_right, pos.y + rect.m_top));
-			if (t != 0) return t;
+			if (t >=8) return t;
 			//¶‰º
 			t = GetTip(CVector2D(pos.x + rect.m_left, pos.y + rect.m_bottom));
-			if (t != 0) return t;
+			if (t >=8) return t;
 			//‰E‰º
 			t = GetTip(CVector2D(pos.x + rect.m_right, pos.y + rect.m_bottom));
-			if (t != 0) return t;
+			if (t >=8) return t;
 			return 0;
 		}
 	
