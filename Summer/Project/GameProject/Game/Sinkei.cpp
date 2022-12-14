@@ -1,9 +1,10 @@
 #include"Sinkei.h"
 
 int count = 1;
-//int mekuri_x[2];
-//int mekuri_y[2];
-//card{mekuri_x[0]}{mekuri_y[0]}
+
+int mekuri_x[2];
+int mekuri_y[2];
+//boardbase{ mekuri_x[0] }{mekuri_y[0]};
 
 static int boardbase[4][4] = {
 	{-1,-2,-3,-4},
@@ -35,6 +36,7 @@ Board::Board()
 
 void Board::Draw()
 {
+	
 	//マウス判定
 	CVector2D p = CInput::GetMousePoint();
 	int col = p.x / CARD_SIZE;
@@ -45,11 +47,14 @@ void Board::Draw()
 		count++;
 		if (count > 2 ) {
 			//めくったカードが一致したら消す
+			m_board[row][col] = false;
+			
 
 		}
 		else {
 			//一致しなければまた裏に戻す
 			
+
 		}
 	}
 	
