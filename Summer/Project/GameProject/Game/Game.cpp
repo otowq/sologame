@@ -12,9 +12,9 @@ int Game::gamestate = eStage;
 
 Game::Game() :Base(eType_Scene)
 {
-	//Base::Add(new UI());
 	Base::Add(new Field());
 	Base::Add(new Map(1));
+	Base::Add(new UI());
 	//Base::Add(new Board());
 }
 
