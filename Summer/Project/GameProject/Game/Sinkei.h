@@ -7,6 +7,10 @@ class Board : public Base {
 private:
 	CImage m_img;
 	int m_board[4][4];
+	//ƒQ[ƒ€‚Ìó‘Ô
+	int m_step;
+	//‘Ò‹@ŠÔ
+	int m_wait;
 public:
 	Board();
 	void Draw();

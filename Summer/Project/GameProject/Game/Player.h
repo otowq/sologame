@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-
+#define PLAYER_SIZE	64
 class Player : public Base {
 private:
 	//ó‘Ô
@@ -22,7 +22,7 @@ private:
 	int m_damage_no;
 
 	int m_hp;
-
+	
 	
 	//Šeó‘Ô‚Å‚Ì‹““®
 	void StateIdle();

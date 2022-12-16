@@ -40,9 +40,9 @@ Enemy::Enemy(const CVector2D& p, bool flip) :
 	//座標設定
 	m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(16, 16);
+	m_img.SetCenter(32, 32);
 	//当たり判定用矩形設定
-	m_rect = CRect(-16, -16, 16, 16);
+	m_rect = CRect(-32, -32, 32, 32);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -162,7 +162,9 @@ void Enemy::Draw() {
 	//描画
 	m_img.Draw();
 	//当たり判定矩形の表示
-	//DrawRect();
+	DrawRect();
+	//表示サイズ設定
+	m_img.SetSize(ENEMY_SIZE, ENEMY_SIZE);
 }
 void Enemy::Collision(Base* b)
 {

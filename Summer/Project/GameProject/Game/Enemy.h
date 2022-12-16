@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-
+#define ENEMY_SIZE	64
 class Enemy : public Base {
 private:
 	//ó‘Ô

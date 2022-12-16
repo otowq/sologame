@@ -33,7 +33,7 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(_anim_up),			//eUp
 };
 Player::Player(const CVector2D& pos, bool flip) :
-	Base(eType_Player) {
+	Base(eType_Player){
 	//画像複製
 	m_img = COPY_RESOURCE("player", CImage);
 
@@ -42,8 +42,8 @@ Player::Player(const CVector2D& pos, bool flip) :
 	//座標設定
 	m_pos = pos;
 	//中心位置設定
-	m_img.SetCenter(16, 16);
-	m_rect = CRect(-16, -16, 16, 16);
+	m_img.SetCenter(32, 32);
+	m_rect = CRect(-32, -32, 32, 32);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -91,7 +91,7 @@ void Player::Update() {
 		is_move = true;
 	}
 	if (is_move) {
-		float move_speed = 4.0f;
+		float move_speed = 6.0f;
 		//現在の方向へ移動
 		//各方向の方向ベクトル
 		CVector2D move_dir[] = {
@@ -135,9 +135,10 @@ void Player::Draw() {
 	//描画
 	m_img.Draw();
 	//当たり判定矩形の表示
-	//DrawRect();
-
-
+	DrawRect();
+	//表示サイズ設定
+	m_img.SetSize(PLAYER_SIZE, PLAYER_SIZE);
+	
 }
 void Player::Collision(Base* b)
 {

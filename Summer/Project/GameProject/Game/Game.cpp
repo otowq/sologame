@@ -5,11 +5,14 @@
 #include"Map.h"
 #include"Sinkei.h"
 #include "../Title/Title.h"
+#include"UI.h"
+
 int stage = 1;
 int Game::gamestate = eStage;
 
 Game::Game() :Base(eType_Scene)
 {
+	//Base::Add(new UI());
 	Base::Add(new Field());
 	Base::Add(new Map(1));
 	//Base::Add(new Board());

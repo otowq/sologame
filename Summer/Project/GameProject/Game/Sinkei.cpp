@@ -1,10 +1,8 @@
 #include"Sinkei.h"
 
 int count = 1;
-
 int mekuri_x[2];
 int mekuri_y[2];
-//boardbase{ mekuri_x[0] }{mekuri_y[0]};
 
 static int boardbase[4][4] = {
 	{-1,-2,-3,-4},
@@ -31,6 +29,9 @@ Board::Board()
 		m_board[r2][c2] = w;
 		w = m_board[r1][c1];
 	}
+	count = 0;
+	m_step = 0;
+	m_wait = 0;
 
 }
 
@@ -41,22 +42,41 @@ void Board::Draw()
 	CVector2D p = CInput::GetMousePoint();
 	int col = p.x / CARD_SIZE;
 	int row = p.y / CARD_SIZE2;
-	//めくり判定
-	if (PUSH(CInput::eMouseL) && m_board[row][col] < 0 && count <= 2) {
-		m_board[row][col] = -m_board[row][col];
-		count++;
-		if (count > 2 ) {
+	switch (m_step) {
+	case 0:
+		if (PUSH(CInput::eMouseL) && m_board[row][col] < 0) {
+			m_board[row][col] = -m_board[row][col];
+			mekuri_x[count] = col;  //めくった列を保存
+			mekuri_y[count] = row;  //めくった行を保存
+			count++;
+			if (count >= 2) {
+				m_step++;
+				m_wait = 0;
+			}
+		}
+		break;
+	case 1:
+		m_wait++;
+		//120F(2秒待つ)かクリックする
+		if (m_wait > 120 || PUSH(CInput::eMouseL)) {
 			//めくったカードが一致したら消す
-			m_board[row][col] = false;
-			
-
+			if (m_board[mekuri_y[0]][mekuri_x[0]] == m_board[mekuri_y[1]][mekuri_x[1]]) {
+				m_board[mekuri_y[0]][mekuri_x[0]] = 0;
+				m_board[mekuri_y[1]][mekuri_x[1]] = 0;
+			}
+			else {
+				//一致しなければまた裏に戻す
+				m_board[mekuri_y[0]][mekuri_x[0]] = -m_board[mekuri_y[0]][mekuri_x[0]];
+				m_board[mekuri_y[1]][mekuri_x[1]] = -m_board[mekuri_y[1]][mekuri_x[1]];
+			}
+			//めくった枚数を0へ戻し
+			count = 0;
+			//めくる状態へ
+			m_step = 0;
 		}
-		else {
-			//一致しなければまた裏に戻す
-			
-
-		}
+		break;
 	}
+	
 	
 
 
