@@ -3,7 +3,7 @@
 int count = 1;
 int mekuri_x[2];
 int mekuri_y[2];
-
+int Turn = 0;
 static int boardbase[4][4] = {
 	{-1,-2,-3,-4},
 	{-1,-2,-3,-4},
