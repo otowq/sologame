@@ -15,7 +15,7 @@
 #include"Game/Field.h"
 #include"Title/Title.h"
 #include"Game/Sinkei.h"
-
+#include"Game/UI.h"
 
 
 
@@ -77,6 +77,7 @@ void Init(void)
 	
 	
 	Base::Add(new Title());
+	
 
 	
 

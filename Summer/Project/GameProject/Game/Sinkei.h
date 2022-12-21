@@ -11,6 +11,8 @@ private:
 	int m_step;
 	//待機時間
 	int m_wait;
+	//敵がめくるカードを決める
+	void EnemyCPU(int* col, int* row);
 public:
 	Board();
 	void Draw();

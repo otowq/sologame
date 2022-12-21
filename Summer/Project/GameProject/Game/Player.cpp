@@ -55,7 +55,7 @@ Player::Player(const CVector2D& pos, bool flip) :
 	//ダメージ番号
 	m_damage_no = -1;
 	//
-	m_hp = 100;
+	m_hp = 5;
 	//方向
 	m_dir = eUp;
 	//アニメーション種類指定
@@ -125,6 +125,7 @@ void Player::Update() {
 	//スクロール設定
 	m_scroll.x = m_pos.x - 1280 / 2;
 	m_scroll.y = m_pos.y - 600;
+	
 }
 
 void Player::Draw() {
@@ -135,7 +136,7 @@ void Player::Draw() {
 	//描画
 	m_img.Draw();
 	//当たり判定矩形の表示
-	DrawRect();
+	//DrawRect();
 	//表示サイズ設定
 	m_img.SetSize(PLAYER_SIZE, PLAYER_SIZE);
 	

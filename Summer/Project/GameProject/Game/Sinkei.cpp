@@ -1,5 +1,6 @@
 #include"Sinkei.h"
-
+#include"Player.h"
+#include"Enemy.h"
 int count = 1;
 int mekuri_x[2];
 int mekuri_y[2];
@@ -10,6 +11,23 @@ static int boardbase[4][4] = {
 	{-1,-2,-3,-4},
 	{-1,-2,-3,-4},
 };
+
+void Board::EnemyCPU(int* col, int* row)
+{
+	//0行目からめくってないカードを調べる
+	for (int r = 0; r < 4; r++) {
+		//0行目からめくってないカードを調べる
+		for (int c = 0; c < 4; c++) {
+			int w = m_board[r][c];
+			//めくってないカードなら
+			if (w < 0) {
+				*row = r;
+				*col = c;
+				return;
+			}
+		}
+	}
+}
 
 Board::Board()
 	:Base(eType_Board)
@@ -56,6 +74,7 @@ void Board::Draw()
 		}
 		break;
 	case 1:
+	case 3:
 		m_wait++;
 		//120F(2秒待つ)かクリックする
 		if (m_wait > 120 || PUSH(CInput::eMouseL)) {
@@ -63,6 +82,7 @@ void Board::Draw()
 			if (m_board[mekuri_y[0]][mekuri_x[0]] == m_board[mekuri_y[1]][mekuri_x[1]]) {
 				m_board[mekuri_y[0]][mekuri_x[0]] = 0;
 				m_board[mekuri_y[1]][mekuri_x[1]] = 0;
+				Enemy::m_hp -= 1;
 			}
 			else {
 				//一致しなければまた裏に戻す
@@ -72,9 +92,24 @@ void Board::Draw()
 			//めくった枚数を0へ戻し
 			count = 0;
 			//めくる状態へ
-			m_step = 0;
+			m_step++;
 		}
 		break;
+	case 2://敵CPUがめくる
+		//敵がめくるカードを決める
+		EnemyCPU(&col, &row);
+		m_board[row][col] = -m_board[row][col];
+		mekuri_x[count] = col; //めくった列を保存
+		mekuri_y[count] = row; //めくった行を保存
+		count++;
+		if (count >= 2) {
+			m_step++;
+			m_wait = 0;
+		}
+		break;
+	case 4:
+		//プレイヤーのターンへ
+		m_step = 0;
 	}
 	
 	

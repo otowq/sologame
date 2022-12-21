@@ -162,7 +162,7 @@ void Enemy::Draw() {
 	//描画
 	m_img.Draw();
 	//当たり判定矩形の表示
-	DrawRect();
+	//DrawRect();
 	//表示サイズ設定
 	m_img.SetSize(ENEMY_SIZE, ENEMY_SIZE);
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "../Base/Base.h"
+#include"Sinkei.h"
+
 #define ENEMY_SIZE	64
 class Enemy : public Base {
 private:
@@ -23,7 +25,7 @@ private:
 	int m_attack_no;
 	//ダメージ番号
 	int m_damage_no;
-	int m_hp=100;
+	int m_hp=5;
 
 	//各状態での挙動
 
