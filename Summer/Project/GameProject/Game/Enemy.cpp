@@ -50,6 +50,8 @@ Enemy::Enemy(const CVector2D& p, bool flip) :
 	m_cnt = 0;
 	//着地フラグ
 	m_is_ground = true;
+
+	//m_hp = 5;
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号

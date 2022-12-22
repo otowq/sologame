@@ -25,7 +25,7 @@ private:
 	int m_attack_no;
 	//ダメージ番号
 	int m_damage_no;
-	int m_hp=5;
+	
 
 	//各状態での挙動
 
@@ -40,5 +40,6 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	static int m_hp;
 };
 extern TexAnimData Enemy_anim_data[];

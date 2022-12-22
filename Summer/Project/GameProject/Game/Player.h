@@ -10,6 +10,7 @@ private:
 		eState_Damage,
 		eState_Down,
 	};
+	
 	//ó‘Ô•Ï”
 	int m_state;
 	CImage m_img;
