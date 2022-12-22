@@ -32,10 +32,11 @@ private:
 	void StateDown();
 
 public:
+	static int m_hp;
 	Player(const CVector2D& pos, bool flip);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
-	static int m_hp;
+	
 };
 extern TexAnimData player_anim_data[];
