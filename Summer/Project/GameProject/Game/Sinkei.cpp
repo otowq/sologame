@@ -82,7 +82,7 @@ void Board::Draw()
 			if (m_board[mekuri_y[0]][mekuri_x[0]] == m_board[mekuri_y[1]][mekuri_x[1]]) {
 				m_board[mekuri_y[0]][mekuri_x[0]] = 0;
 				m_board[mekuri_y[1]][mekuri_x[1]] = 0;
-				//Enemy::m_hp -= 1;
+				
 			}
 			else {
 				//ˆê’v‚µ‚È‚¯‚ê‚Î‚Ü‚½— ‚É–ß‚·
