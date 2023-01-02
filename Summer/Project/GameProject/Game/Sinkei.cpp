@@ -28,8 +28,8 @@ void Board::EnemyCPU(int* col, int* row)
 		}
 	}
 }
-
-Board::Board()
+//対戦相手を引数で受け取る
+Board::Board(Enemy* enemy)
 	:Base(eType_Board)
 {
 	
@@ -50,7 +50,8 @@ Board::Board()
 	count = 0;
 	m_step = 0;
 	m_wait = 0;
-
+	//対戦相手
+	m_enemy = enemy;
 }
 
 void Board::Draw()
@@ -82,6 +83,14 @@ void Board::Draw()
 			if (m_board[mekuri_y[0]][mekuri_x[0]] == m_board[mekuri_y[1]][mekuri_x[1]]) {
 				m_board[mekuri_y[0]][mekuri_x[0]] = 0;
 				m_board[mekuri_y[1]][mekuri_x[1]] = 0;
+				if (m_step == 1) {
+					//プレイヤーのターン。敵へのダメージ
+					m_enemy->m_hp--;
+				}
+				else {
+					//敵のターンプレイヤーへのダメージ
+					Player::m_hp--;
+				}
 				
 			}
 			else {

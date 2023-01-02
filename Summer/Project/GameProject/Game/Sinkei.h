@@ -3,6 +3,8 @@
 #define CARD_SIZE	64
 #define CARD_SIZE2   128
 
+class Enemy;
+
 class Board : public Base {
 private:
 	CImage m_img;
@@ -14,7 +16,8 @@ private:
 	//敵がめくるカードを決める
 	void EnemyCPU(int* col, int* row);
 public:
-	Board();
+	Enemy* m_enemy;
+	Board(Enemy* m_enemy);
 	void Draw();
 	//指定座標のチップ番号を取得
 	int GetTip(const CVector2D& pos);

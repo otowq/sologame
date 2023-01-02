@@ -5,6 +5,10 @@
 #include"Map.h"
 #include"Game.h"
 //#include "Effect.h"
+#include"Enemy.h"
+//staticメンバーは.cppに定義しておく
+int Player::m_hp = 10;
+
 static TexAnim _anim_down[] = {
 	{0,4},
 	{1,4},
@@ -149,7 +153,8 @@ void Player::Collision(Base* b)
 		if (Base::CollisionRect(this, b)) {
 			if (Game::gamestate == Game::eStage) {
 				Game::gamestate = Game::eBattle;
-				Base::Add(new Board());
+				//神経衰弱ゲーム生成時に対戦相手を渡す
+				Base::Add(new Board(dynamic_cast<Enemy*>(b)));
 			}
 		}
 		break;
