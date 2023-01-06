@@ -60,7 +60,7 @@ Enemy::Enemy(const CVector2D& p, bool flip) :
 	//アニメーション種類指定
 	m_img.ChangeAnimation(m_dir);
 	//HPを設定
-	m_hp = 10;
+	m_hp = 5;
 
 }void Enemy::StateIdle()
 {

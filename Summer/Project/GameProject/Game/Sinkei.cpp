@@ -1,6 +1,7 @@
 #include"Sinkei.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"Game.h"
 int count = 1;
 int mekuri_x[2];
 int mekuri_y[2];
@@ -86,6 +87,11 @@ void Board::Draw()
 				if (m_step == 1) {
 					//プレイヤーのターン。敵へのダメージ
 					m_enemy->m_hp--;
+					//神経衰弱終了
+					if (m_enemy->m_hp == 0) {
+						SetKill();
+						Game::gamestate = Game::eStage;
+					}
 				}
 				else {
 					//敵のターンプレイヤーへのダメージ
