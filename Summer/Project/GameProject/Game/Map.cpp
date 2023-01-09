@@ -1,7 +1,7 @@
 #include"Map.h"
 #include"Player.h"
 #include"Enemy.h"
-
+#include"Boss.h"
 static int stage1data[MAP_HEIGHT][MAP_WIDTH] = {
 	{ 178,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,182,184,184,184,184,184,184,184,184,184,184,184,184,179},
 	{ 176,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,572,572,572,572,572,176,155,1,1,1,1,1,1,1,1,1,1,1,176},
@@ -69,9 +69,8 @@ Map::Map(int stage)
 
 			break;
 		case 2:
-
-			
 			Base::Add(new Player(CVector2D(200, 300), false));
+			Base::Add(new Boss(CVector2D(400, 300), false));
 			memcpy(m_stagedata, stage2data, sizeof(stage2data));
 			break;
 		}

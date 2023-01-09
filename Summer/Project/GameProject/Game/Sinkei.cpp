@@ -90,6 +90,7 @@ void Board::Draw()
 					//_ŒoŠŽãI—¹
 					if (m_enemy->m_hp == 0) {
 						SetKill();
+						m_enemy->SetKill();
 						Game::gamestate = Game::eStage;
 					}
 				}

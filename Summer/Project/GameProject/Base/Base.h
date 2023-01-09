@@ -13,6 +13,7 @@ enum {
 	eType_UI,
 	eType_Scene,
 	eType_Board,
+	eType_Boss,
 };
 
 

@@ -16,6 +16,7 @@
 #include"Title/Title.h"
 #include"Game/Sinkei.h"
 #include"Game/UI.h"
+#include"Game/Boss.h"
 
 
 
@@ -72,8 +73,9 @@ void Init(void)
 	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("player", CImage::CreateImage("Image/player.png", player_anim_data, 32, 32));
-	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", player_anim_data, 32, 32));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 32, 32));
 	ADD_RESOURCE("heart", CImage::CreateImage("Image/heart.png"));
+	ADD_RESOURCE("boss", CImage::CreateImage("Image/Enemy.png", boss_anim_data, 32, 32));
 	
 	
 	Base::Add(new Title());

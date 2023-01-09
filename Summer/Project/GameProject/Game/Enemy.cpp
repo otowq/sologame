@@ -23,7 +23,7 @@ static TexAnim _anim_up[] = {
 	{11,4},
 };
 
-TexAnimData Enemy_anim_data[] = {
+TexAnimData enemy_anim_data[] = {
 	ANIMDATA(_anim_down),		//eUp
 	ANIMDATA(_anim_left),		//eLeft
 	ANIMDATA(_anim_right),		//eRight
