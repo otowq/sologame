@@ -28,8 +28,9 @@ Game::~Game()
 
 void Game::Update()
 {
-	//Base* enemy = Base::FindObject(eType_Enemy);
-	if (/*enemy == nullptr || */ (PUSH(CInput::eButton1))) {
+	Base* enemy = Base::FindObject(eType_Enemy);
+	Base* boss = Base::FindObject(eType_Boss);
+	if (enemy == nullptr ) {
 		Base* player = Base::FindObject(eType_Player);
 		Base* enemy = Base::FindObject(eType_Enemy);
 		player->SetKill();

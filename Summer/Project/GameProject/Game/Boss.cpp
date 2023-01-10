@@ -34,7 +34,6 @@ Boss::Boss(const CVector2D& p, bool flip) :
 	//画像複製
 	m_img = COPY_RESOURCE("boss", CImage);
 
-	//m_img.Load("Image/Enemy.png", enemy_anim_data, 256, 256);
 	//再生アニメーション設定
 	//m_img.ChangeAnimation(0);
 	//座標設定

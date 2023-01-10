@@ -92,6 +92,7 @@ void Board::Draw()
 						SetKill();
 						m_enemy->SetKill();
 						Game::gamestate = Game::eStage;
+						Player::m_hp += 1;
 					}
 				}
 				else {
