@@ -2,7 +2,7 @@
 #include "../Base/Base.h"
 #include"Sinkei.h"
 
-#define ENEMY_SIZE	64
+#define ENEMY_SIZE	32
 class Enemy : public Base {
 private:
 	//ó‘Ô

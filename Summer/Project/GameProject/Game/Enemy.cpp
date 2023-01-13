@@ -40,9 +40,9 @@ Enemy::Enemy(const CVector2D& p, bool flip) :
 	//座標設定
 	m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(32, 32);
+	m_img.SetCenter(16, 16);
 	//当たり判定用矩形設定
-	m_rect = CRect(-32, -32, 32, 32);
+	m_rect = CRect(-16, -16, 16, 16);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ

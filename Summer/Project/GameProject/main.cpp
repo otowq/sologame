@@ -76,7 +76,7 @@ void Init(void)
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 32, 32));
 	ADD_RESOURCE("heart", CImage::CreateImage("Image/heart.png"));
 	ADD_RESOURCE("boss", CImage::CreateImage("Image/boss.png", boss_anim_data, 32, 32));
-	
+	srand(time(NULL));
 	
 	Base::Add(new Title());
 	

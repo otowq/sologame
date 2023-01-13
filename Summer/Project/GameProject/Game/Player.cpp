@@ -10,24 +10,24 @@
 int Player::m_hp = 10;
 
 static TexAnim _anim_down[] = {
-	{0,4},
-	{1,4},
-	{2,4},
+	{0,6},
+	{1,6},
+	{2,6},
 };
 static TexAnim _anim_left[] = {
-	{3,4},
-	{4,4},
-	{5,4},
+	{3,6},
+	{4,6},
+	{5,6},
 };
 static TexAnim _anim_right[] = {
-	{6,4},
-	{7,4},
-	{8,4},
+	{6,6},
+	{7,6},
+	{8,6},
 };
 static TexAnim _anim_up[] = {
-	{9,4},
-	{10,4},
-	{11,4},
+	{9,6},
+	{10,6},
+	{11,6},
 };
 
 TexAnimData player_anim_data[] = {
@@ -45,9 +45,10 @@ Player::Player(const CVector2D& pos, bool flip) :
 	//m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos = pos;
+	m_pos_old = pos;
 	//中心位置設定
-	m_img.SetCenter(32, 32);
-	m_rect = CRect(-32, -32, 32, 32);
+	m_img.SetCenter(16, 16);
+	m_rect = CRect(-16, -16, 16, 16);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -95,7 +96,7 @@ void Player::Update() {
 		is_move = true;
 	}
 	if (is_move) {
-		float move_speed = 6.0f;
+		float move_speed = 4.0f;
 		//現在の方向へ移動
 		//各方向の方向ベクトル
 		CVector2D move_dir[] = {

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-#define PLAYER_SIZE	64
+#define PLAYER_SIZE	32
 class Player : public Base {
 private:
 	//èÛë‘

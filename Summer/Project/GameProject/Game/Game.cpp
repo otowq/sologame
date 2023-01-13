@@ -30,9 +30,12 @@ void Game::Update()
 {
 	Base* enemy = Base::FindObject(eType_Enemy);
 	Base* boss = Base::FindObject(eType_Boss);
-	if (enemy == nullptr ) {
+	Base* map = Base::FindObject(eType_Map);
+	if (enemy == nullptr && boss == nullptr) {
 		Base* player = Base::FindObject(eType_Player);
+		Base* map = Base::FindObject(eType_Map);
 		Base* enemy = Base::FindObject(eType_Enemy);
+		map->SetKill();
 		player->SetKill();
 		stage++;
 		if (stage >= 3) {
