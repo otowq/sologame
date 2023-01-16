@@ -62,9 +62,9 @@ Map::Map(int stage)
 		case 1:
 			
 			Base::Add(new Player(CVector2D(200, 300), false));
-			//Base::Add(new Enemy(CVector2D(1000, 400), false));
-			//Base::Add(new Enemy(CVector2D(600, 500), false));
-			//Base::Add(new Enemy(CVector2D(600, 100), false));
+			Base::Add(new Enemy(CVector2D(1000, 400), false, eType_Enemy));
+			Base::Add(new Enemy(CVector2D(600, 500), false, eType_Enemy));
+			Base::Add(new Enemy(CVector2D(600, 100), false, eType_Enemy));
 			memcpy(m_stagedata, stage1data, sizeof(stage1data));
 
 			break;

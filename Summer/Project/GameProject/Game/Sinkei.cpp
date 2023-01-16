@@ -8,19 +8,21 @@ int count = 1;
 int mekuri_x[2];
 int mekuri_y[2];
 int Turn = 0;
-static int boardbase[4][4] = {
-	{-1,-2,-3,-4},
-	{-1,-2,-3,-4},
-	{-1,-2,-3,-4},
-	{-1,-2,-3,-4},
+static int boardbase[6][6] = {
+	{-1,-2,-3,-4,-5,-6},
+	{-1,-2,-3,-4,-5,-6},
+	{-1,-2,-3,-4,-5,-6},
+	{-1,-2,-3,-4,-5,-6},
+	{-1,-2,-3,-4,-5,-6},
+	{-1,-2,-3,-4,-5,-6},
 };
 
 void Board::EnemyCPU(int* col, int* row)
 {
 	//0行目からめくってないカードを調べる
-	for (int r = 0; r < 4; r++) {
+	for (int r = 0; r < 6; r++) {
 		//0行目からめくってないカードを調べる
-		for (int c = 0; c < 4; c++) {
+		for (int c = 0; c < 6; c++) {
 			int w = m_board[r][c];
 			//めくってないカードなら
 			if (w < 0) {
@@ -135,8 +137,8 @@ void Board::Draw()
 
 
 	//マップチップによる表示の繰り返し
-	for ( int i = 0; i < 4; i++) {
-		for ( int j = 0; j < 4; j++) {
+	for ( int i = 0; i < 6; i++) {
+		for ( int j = 0; j < 6; j++) {
 			//表示しない制御
 			if (m_board[i][j] == 0)continue;
 			int t = m_board[i][j] - 1;
@@ -168,12 +170,12 @@ int Board::GetTip(const CVector2D& pos)
 	int col = pos.x / CARD_SIZE;
 	//列の制限(0～MAP_WIDTH-1)
 	if (col < 0) col = 0;
-	if (col > 4 - 1) col = 4 - 1;
+	if (col > 6 - 1) col = 6 - 1;
 	//行を計算
 	int raw = pos.y / CARD_SIZE2;
 	//行の制限(0～MAP_HEIGHT-1)
 	if (raw < 0) raw = 0;
-	if (raw > 4 - 1) raw = 4 - 1;
+	if (raw > 6 - 1) raw = 6 - 1;
 	//チップデータを返却
 	return GetTip(col, raw);
 }

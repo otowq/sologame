@@ -8,7 +8,7 @@ class Enemy;
 class Board : public Base {
 private:
 	CImage m_img;
-	int m_board[4][4];
+	int m_board[6][6];
 	//ƒQ[ƒ€‚Ìó‘Ô
 	int m_step;
 	//‘Ò‹@ŠÔ

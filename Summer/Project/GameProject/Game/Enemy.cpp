@@ -29,8 +29,8 @@ TexAnimData enemy_anim_data[] = {
 	ANIMDATA(_anim_right),		//eRight
 	ANIMDATA(_anim_up),			//eUp
 };
-Enemy::Enemy(const CVector2D& p, bool flip) :
-	Base(eType_Enemy) {
+Enemy::Enemy(const CVector2D& p, bool flip,int Type) :
+	Base(Type) {
 	//âÊëúï°êª
 	m_img = COPY_RESOURCE("Enemy", CImage);
 

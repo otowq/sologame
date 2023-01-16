@@ -30,7 +30,7 @@ TexAnimData boss_anim_data[] = {
 	ANIMDATA(_anim_up),			//eUp
 };
 Boss::Boss(const CVector2D& p, bool flip) :
-	Base(eType_Boss) {
+	Enemy(p,flip,eType_Boss) {
 	//âÊëúï°êª
 	m_img = COPY_RESOURCE("boss", CImage);
 

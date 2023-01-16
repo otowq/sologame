@@ -4,7 +4,7 @@
 
 #define ENEMY_SIZE	32
 class Enemy : public Base {
-private:
+public:
 	//èÛë‘
 	enum {
 		eState_Idle,
@@ -36,7 +36,7 @@ private:
 	void StateDown();
 
 public:
-	Enemy(const CVector2D& p, bool flip);
+	Enemy(const CVector2D& p, bool flip,int Type);
 	void Update();
 	void Draw();
 	void Collision(Base* b);

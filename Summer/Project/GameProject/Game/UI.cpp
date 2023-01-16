@@ -13,7 +13,7 @@ UI::UI():Base(eType_UI)
 
 void UI::Draw()
 {
-	m_heart.SetPos(300, 0);
+	m_heart.SetPos(350, 0);
 	m_heart.Draw();
 	//表示サイズ設定
 	m_heart.SetSize(UI_SIZE, UI_SIZE);
@@ -24,7 +24,7 @@ void UI::Draw()
 		int s = hp % 10;
 		m_img.SetRect(16 * s, 16, 16 * s + 16, 32);
 		m_img.SetSize(32, 32);
-		m_img.SetPos(350 - 16 * i, 50);
+		m_img.SetPos(400 - 16 * i, 50);
 		m_img.Draw();
 	}
 	//敵のHP表示
@@ -35,7 +35,7 @@ void UI::Draw()
 			int s = hp % 10;
 			m_img.SetRect(16 * s, 16, 16 * s + 16, 32);
 			m_img.SetSize(32, 32);
-			m_img.SetPos(450 - 16 * i, 50);
+			m_img.SetPos(500 - 16 * i, 50);
 			m_img.Draw();
 		}
 	}
