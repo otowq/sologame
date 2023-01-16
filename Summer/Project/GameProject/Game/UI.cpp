@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"Sinkei.h"
 #include"Enemy.h"
+#include"Boss.h"
 
 UI::UI():Base(eType_UI)
 {

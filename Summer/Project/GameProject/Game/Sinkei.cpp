@@ -2,6 +2,8 @@
 #include"Player.h"
 #include"Enemy.h"
 #include"Game.h"
+#include"Boss.h"
+
 int count = 1;
 int mekuri_x[2];
 int mekuri_y[2];

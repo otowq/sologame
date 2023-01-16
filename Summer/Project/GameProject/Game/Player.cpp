@@ -6,6 +6,7 @@
 #include"Game.h"
 //#include "Effect.h"
 #include"Enemy.h"
+#include"Boss.h"
 //staticメンバーは.cppに定義しておく
 int Player::m_hp = 10;
 
@@ -151,6 +152,15 @@ void Player::Collision(Base* b)
 	switch (b->m_type) {
 		//判定
 	case eType_Enemy:
+		if (Base::CollisionRect(this, b)) {
+			if (Game::gamestate == Game::eStage) {
+				Game::gamestate = Game::eBattle;
+				//神経衰弱ゲーム生成時に対戦相手を渡す
+				Base::Add(new Board(dynamic_cast<Enemy*>(b)));
+			}
+		}
+		break;
+	case eType_Boss:
 		if (Base::CollisionRect(this, b)) {
 			if (Game::gamestate == Game::eStage) {
 				Game::gamestate = Game::eBattle;
